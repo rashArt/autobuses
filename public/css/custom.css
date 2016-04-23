@@ -1,0 +1,20 @@
+/* navbar */
+.nav > li .drop-custom {
+  color: #fff !important;
+  margin-top: -7px;
+}
+.nav > li .drop-custom:hover,
+.nav > li .drop-custom:focus {
+  color: #fff !important;
+  background-color: #1A242F;
+}
+.nav .open > .drop-custom,
+.nav .open > .drop-custom:hover,
+.nav .open > .drop-custom:focus {
+  background-color: #1A242F;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #ffffff;
+  margin-top: -5px;
+}
