@@ -42,10 +42,10 @@ class OficinaController extends Controller
 
     public function show($id)
     {
-        // $oficina = Oficina::find($id);
+        $oficina = Oficina::find($id);
 
-        // return view('oficinas.show')
-        //     ->with('oficina', $oficina);
+        return view('oficinas.show')
+            ->with('oficina', $oficina);
     }
 
 

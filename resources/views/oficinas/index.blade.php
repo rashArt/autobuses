@@ -29,6 +29,7 @@
                   <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                       <tr>
+                        <th>#</th>
                         <th>Nombre</th>
                         <th>Dirección</th>
                         <th>Teléfono</th>
@@ -38,6 +39,7 @@
                     <tbody>
                       @foreach($oficinas as $oficina)
                         <tr class="">
+                          <td>{{ $oficina->id }}</td>
                           <td>{{ $oficina->nombre }}</td>
                           <td>{{ $oficina->direccion }}</td>
                           <td>{{ $oficina->telefono }}</td>
@@ -45,6 +47,8 @@
                             <div class="" role="">
 
                               <a href="{{ URL::to('oficinas/' . $oficina->id . '/edit') }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar</a>
+
+                              <a href="{{ URL::to('oficinas/' . $oficina->id ) }}" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> Ver</a>
 
                               <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#del{!!$oficina->id!!}"><i class="fa fa-trash"></i> Eliminar</button>
                               <!-- Modal -->
