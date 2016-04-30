@@ -5,83 +5,95 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\PerfilCreateRequest;
+use App\Http\Requests\PerfilUpdateRequest;
 use App\Http\Controllers\Controller;
+use App\Perfil;
+use Laracasts\Flash\Flash;
 
 class PerfilController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $perfiles = Perfil::all();
+
+        return view('perfiles.index')
+            ->with('perfiles', $perfiles);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('perfiles.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(PerfilCreateRequest $request)
     {
-        //
+        $perfil = new Perfil();
+        $perfil->nombre = $request->nombre;
+        $perfil->save();
+
+        Flash::success('Se ha registrado el Perfil '. $perfil->nombre .' exitosamente!');
+
+        return redirect()->route('perfiles.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $perfil = Perfil::find($id);
+
+        if ($perfil->nombre == 'Administrador') {
+
+            Flash::success('El perfil Administrador no puede ser Modificado!');
+
+            return redirect()->route('perfiles.index');
+        }else{
+
+            return view('perfiles.edit')
+            ->with('perfil', $perfil);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(PerfilUpdateRequest $request, $id)
     {
-        //
+        $perfil = Perfil::find($id);
+
+        if ($perfil->nombre == 'Administrador') {
+
+            Flash::success('El perfil Administrador no puede ser Modificado!');
+
+            return redirect()->route('perfiles.index');
+        }else{
+
+            $perfil->nombre = $request->nombre;
+            $perfil->save();
+
+            Flash::success('Se ha actualizado el Perfil '. $perfil->nombre .' exitosamente!');
+
+            return redirect()->route('perfiles.index');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $perfil = Perfil::find($id);
+
+        if ($perfil->nombre == 'Administrador') {
+
+            Flash::success('El perfil Administrador no puede ser Eliminado!');
+
+            return redirect()->route('perfiles.index');
+        }else{
+
+            $perfil->delete();
+
+            Flash::success('Se ha eliminado exitosamente!');
+
+            return back();
+        }
     }
 }

@@ -1,7 +1,6 @@
 @extends('base.main')
 @section('title', 'Editar Oficina')
 @section('oficinas', 'active')
-@section('oficinas-reg', 'active')
 
 @section('content')
 
