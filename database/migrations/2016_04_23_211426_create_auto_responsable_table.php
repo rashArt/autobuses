@@ -14,11 +14,11 @@ class CreateAutoResponsableTable extends Migration
     {
         Schema::create('auto_responsable', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('autobus_id')->unsigned();
+            $table->integer('auto_id')->unsigned();
             $table->integer('persona_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('autobus_id')->references('id')->on('autobuses');
+            $table->foreign('auto_id')->references('id')->on('autobuses');
             $table->foreign('persona_id')->references('id')->on('personas');
         });
     }

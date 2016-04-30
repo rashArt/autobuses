@@ -12,14 +12,14 @@ class Auto extends Model
 
     /* Relaciones */
 
-    public function autoDueno(){
+    public function personaDuenos(){
 
-        return $this->hasMany(Auto_dueno::class);
+        return $this->belongsToMany("App\Persona","auto_dueno")->withPivot('persona_id');
     }
 
-    public function autoResponsable(){
+    public function personaResponsables(){
 
-        return $this->hasMany(Auto_responsable::class);
+        return $this->belongsToMany("App\Persona","auto_responsable")->withPivot('persona_id');
     }
 
 }

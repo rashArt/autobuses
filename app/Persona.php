@@ -32,15 +32,15 @@ class Persona extends Model
         return $this->belongsTo(Oficina::class);
     }
 
+    public function autoDuenos(){
 
-    public function autoDueno(){
-
-        return $this->hasMany(Auto_dueno::class);
+      return $this->belongsTo("App\Auto","auto_dueno")->withTimestamps()->withPivot('auto_id');
     }
 
-    public function autoResponsable(){
+    public function autoResponsables(){
 
-        return $this->hasMany(Auto_responsable::class);
+      return $this->belongsTo("App\Auto","auto_responsable")->withTimestamps()->withPivot('auto_id');
     }
+
 
 }
