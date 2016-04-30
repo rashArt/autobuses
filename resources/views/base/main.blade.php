@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Biblioteca | @yield('title')</title>
+  <title>Autobuses | @yield('title')</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="{{ asset('css/superhero.css') }}" rel="stylesheet">
@@ -24,7 +24,9 @@
   <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
 
   <!-- Custom Fonts -->
-  <link href="{{ asset('font-awesome-4.1.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('font-awesome-4.5.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+
+  @yield('css')
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,7 +50,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ route('principal') }}">Biblioteca</a>
+        <a class="navbar-brand" href="{{ route('principal') }}">Autobuses</a>
       </div>
       <!-- /.navbar-header -->
 
@@ -56,11 +58,10 @@
         <!-- /.dropdown -->
         <li class="dropdown">
           <a class="dropdown-toggle drop-custom" data-toggle="dropdown" href="#">
-            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+            <i class="fa fa-user fa-fw"></i> {{ Auth::user()->perfil->nombre }} <i class="fa fa-caret-down"></i>
           </a>
           <ul class="dropdown-menu dropdown-user">
-            <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil</a>
-            </li>
+            <li><a href="#"><i class="fa fa-user fa-fw"></i> {{ Auth::user()->email }} </a></li>
             <li class="divider"></li>
             <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> salir</a>
             </li>
@@ -86,22 +87,58 @@
               <!-- /input-group -->
             </li>
             <li>
-              <a href="{{ route('principal') }}" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+              <a href="{{ route('principal') }}" class="@yield('principal')"><i class="fa fa-dashboard fa-fw"></i> Principal</a>
             </li>
-            <li>
-              <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+            <li class="@yield('autobuses')">
+              <a href="#"><i class="fa fa-bus fa-fw"></i> Autobuses<span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
                 <li>
-                  <a href="flot.html">Flot Charts</a>
+                  <a href="{{ route('autobuses.create') }}" class="@yield('autobuses-reg')">Registrar</a>
                 </li>
                 <li>
-                  <a href="#">Morris.js Charts</a>
+                  <a href="{{ route('autobuses.index') }}" class="@yield('autobuses-list')">Listado</a>
+                </li>
+              </ul>
+              <!-- /.nav-second-level -->
+            </li>
+            <li class="@yield('oficinas')">
+              <a href="#"><i class="fa fa-building fa-fw"></i> Oficinas<span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                <li>
+                  <a href="{{ route('oficinas.create') }}" class="@yield('oficinas-reg')">Registrar</a>
+                </li>
+                <li>
+                  <a href="{{ route('oficinas.index') }}" class="@yield('oficinas-list')">Listado</a>
+                </li>
+              </ul>
+              <!-- /.nav-second-level -->
+            </li>
+            <li class="@yield('perfiles')">
+              <a href="#"><i class="fa fa-tag fa-fw"></i> Perfiles<span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                <li>
+                  <a href="{{ route('perfiles.create') }}" class="@yield('perfiles-reg')">Registrar</a>
+                </li>
+                <li>
+                  <a href="{{ route('perfiles.index') }}" class="@yield('perfiles-list')">Listado</a>
+                </li>
+              </ul>
+              <!-- /.nav-second-level -->
+            </li>
+            <li class="@yield('users')">
+              <a href="#"><i class="fa fa-users fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                <li>
+                  <a href="{{ route('users.create') }}" class="@yield('users-reg')">Registrar</a>
+                </li>
+                <li>
+                  <a href="{{ route('users.index') }}" class="@yield('users-list')">Listado</a>
                 </li>
               </ul>
               <!-- /.nav-second-level -->
             </li>
             <li>
-              <a href="#"><i class="fa fa-table fa-fw"></i> Tables</a>
+              <a href="#" class="@yield('descargas')"><i class="fa fa-download fa-fw"></i> Descargas</a>
             </li>
           </ul>
         </div>
@@ -126,6 +163,8 @@
 
   <!-- Custom Theme JavaScript -->
   <script src="{{ asset('js/sb-admin-2.js') }}"></script>
+
+  @yield('js')
 
 </body>
 

@@ -44,4 +44,24 @@ Route::group(['middleware' => 'auth'], function () {
             'as' => 'principal'
         ]
     );
+
+    /* AUTOBUSES */
+        Route::resource('autobuses', 'AutoController');
+
+        Route::get('autobuses/{id}/delete','AutoController@delete');
+
+    /* OFICINAS */
+        Route::resource('oficinas', 'OficinaController');
+
+        Route::get('oficinas/{id}/delete','OficinaController@delete');
+
+    /* PERFILES */
+        Route::resource('perfiles', 'PerfilController');
+
+        Route::get('perfiles/{id}/delete','PerfilController@delete');
+
+    /* USERS */
+        Route::resource('users', 'UserController');
+
+        Route::get('users/{id}/delete','UserController@delete');
 });
