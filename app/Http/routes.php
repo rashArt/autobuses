@@ -55,13 +55,16 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('oficinas/{id}/delete','OficinaController@delete');
 
-    /* PERFILES */
-        Route::resource('perfiles', 'PerfilController');
 
-        Route::get('perfiles/{id}/delete','PerfilController@delete');
+    Route::group(['middleware' => 'admin'], function () {
+        /* PERFILES */
+            Route::resource('perfiles', 'PerfilController');
 
-    /* USERS */
-        Route::resource('users', 'UserController');
+            Route::get('perfiles/{id}/delete','PerfilController@delete');
 
-        Route::get('users/{id}/delete','UserController@delete');
+        /* USERS */
+            Route::resource('users', 'UserController');
+
+            Route::get('users/{id}/delete','UserController@delete');
+    });
 });

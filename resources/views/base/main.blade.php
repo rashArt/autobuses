@@ -101,6 +101,7 @@
               </ul>
               <!-- /.nav-second-level -->
             </li>
+            @if (Auth::user()->admin())
             <li class="@yield('oficinas')">
               <a href="#"><i class="fa fa-building fa-fw"></i> Oficinas<span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
@@ -137,6 +138,7 @@
               </ul>
               <!-- /.nav-second-level -->
             </li>
+            @endif
             <li>
               <a href="#" class="@yield('descargas')"><i class="fa fa-download fa-fw"></i> Descargas</a>
             </li>

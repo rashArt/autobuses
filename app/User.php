@@ -49,4 +49,10 @@ class User extends Model implements AuthenticatableContract,
 
       return $this->hasMany(Persona::class);
     }
+
+    /* validando si es administrador para uso del middleware */
+    public function admin()
+    {
+        return $this->perfil->nombre === "Administrador";
+    }
 }

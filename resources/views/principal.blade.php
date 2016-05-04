@@ -15,6 +15,7 @@
         </div>
         <!-- /.row -->
         <div class="row">
+          @if (Auth::user()->admin())
           <div class="col-lg-3 col-md-6">
             <div class="panel panel-primary">
               <div class="panel-heading">
@@ -59,6 +60,7 @@
               </a>
             </div>
           </div>
+          @endif
           <div class="col-lg-3 col-md-6">
             <div class="panel panel-yellow">
               <div class="panel-heading">
