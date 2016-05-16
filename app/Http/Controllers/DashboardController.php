@@ -10,6 +10,7 @@ use App\User;
 use App\Oficina;
 use App\Persona;
 use App\Auto;
+use App\Auto_ruta;
 
 class DashboardController extends Controller
 {
@@ -18,10 +19,13 @@ class DashboardController extends Controller
         $personas = Persona::count();
         $oficinas = Oficina::count();
         $autobuses = Auto::count();
+        $rutas = Auto_ruta::whereDay('created_at', '=', date('d'))->get();
+        $asignadas = count($rutas);
 
         return view('principal')
             ->with('personas', $personas)
             ->with('oficinas', $oficinas)
-            ->with('autobuses', $autobuses);
+            ->with('autobuses', $autobuses)
+            ->with('asignadas', $asignadas);
     }
 }

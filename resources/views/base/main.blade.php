@@ -26,6 +26,8 @@
   <!-- Custom Fonts -->
   <link href="{{ asset('font-awesome-4.5.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
+  <link href="{{ asset('js/plugins/select2/css/select2.css') }}" rel="stylesheet" type="text/css">
+
   @yield('css')
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -101,7 +103,43 @@
               </ul>
               <!-- /.nav-second-level -->
             </li>
+            <li class="@yield('asignaciones')">
+              <a href="#"><i class="fa fa-map-signs fa-fw"></i> Asignar Rutas<span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                <li>
+                  <a href="{{ route('asignaciones.create') }}" class="@yield('asignaciones-reg')">Registrar</a>
+                </li>
+                <li>
+                  <a href="{{ route('asignaciones.index') }}" class="@yield('asignaciones-list')">Listado</a>
+                </li>
+              </ul>
+              <!-- /.nav-second-level -->
+            </li>
             @if (Auth::user()->admin())
+            <li class="@yield('localidades')">
+              <a href="#"><i class="fa fa-map-pin fa-fw"></i> Localidades<span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                <li>
+                  <a href="{{ route('localidades.create') }}" class="@yield('localidades-reg')">Registrar</a>
+                </li>
+                <li>
+                  <a href="{{ route('localidades.index') }}" class="@yield('localidades-list')">Listado</a>
+                </li>
+              </ul>
+              <!-- /.nav-second-level -->
+            </li>
+            <li class="@yield('rutas')">
+              <a href="#"><i class="fa fa-road fa-fw"></i> Rutas<span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                <li>
+                  <a href="{{ route('rutas.create') }}" class="@yield('rutas-reg')">Registrar</a>
+                </li>
+                <li>
+                  <a href="{{ route('rutas.index') }}" class="@yield('rutas-list')">Listado</a>
+                </li>
+              </ul>
+              <!-- /.nav-second-level -->
+            </li>
             <li class="@yield('oficinas')">
               <a href="#"><i class="fa fa-building fa-fw"></i> Oficinas<span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
@@ -165,6 +203,8 @@
 
   <!-- Custom Theme JavaScript -->
   <script src="{{ asset('js/sb-admin-2.js') }}"></script>
+
+  <script src="{{ asset('js/plugins/select2/js/select2.js') }}"></script>
 
   @yield('js')
 

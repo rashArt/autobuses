@@ -22,4 +22,9 @@ class Auto extends Model
         return $this->belongsToMany("App\Persona","auto_responsable")->withPivot('persona_id');
     }
 
+    public function autoRuta(){
+
+        return $this->hasMany(Auto_ruta::class);
+    }
+
 }

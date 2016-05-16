@@ -55,12 +55,27 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('oficinas/{id}/delete','OficinaController@delete');
 
+    /* ASIGNAR RUTAS */
+        Route::resource('asignaciones', 'AutoRutaController');
+
+        Route::get('asignaciones/{id}/delete','AutoRutaController@delete');
+
 
     Route::group(['middleware' => 'admin'], function () {
         /* PERFILES */
             Route::resource('perfiles', 'PerfilController');
 
             Route::get('perfiles/{id}/delete','PerfilController@delete');
+
+        /* LOCALIDADES */
+            Route::resource('localidades', 'LocalidadController');
+
+            Route::get('localidades/{id}/delete','LocalidadController@delete');
+
+        /* RUTAS */
+            Route::resource('rutas', 'RutaController');
+
+            Route::get('rutas/{id}/delete','RutaController@delete');
 
         /* USERS */
             Route::resource('users', 'UserController');
