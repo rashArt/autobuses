@@ -18,3 +18,20 @@
   color: #ffffff;
   margin-top: -5px;
 }
+
+.btn-light {
+  color: #ffffff !important;
+  background-color: #9b9b9b;
+  border-color: #7b7b7b;
+}
+.btn-light:focus,
+.btn-light.focus {
+  color: #ffffff !important;
+  background-color: #9b9b9b;
+  border-color: #5b5b5b;
+}
+.btn-light:hover {
+  color: #ffffff !important;
+  background-color: #9b9b9b;
+  border-color: #5b5b5b;
+}

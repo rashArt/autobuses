@@ -24,11 +24,13 @@ class AutoCreateRequest extends Request
     public function rules()
     {
         return [
-            'numero'    => 'required|numeric|unique:autobuses',
-            'marca'     => 'required',
-            'modelo'    => 'required',
-            'serial'    => 'required|unique:autobuses',
-            'matricula' => 'required|unique:autobuses'
+            'dueno'           => 'required',
+            'responsable'     => 'required',
+            'numero'          => 'required|numeric|unique:autobuses',
+            'marca'           => 'required',
+            'modelo'          => 'required',
+            'serial'          => 'required|unique:autobuses',
+            'matricula'       => 'required|unique:autobuses'
         ];
     }
 }

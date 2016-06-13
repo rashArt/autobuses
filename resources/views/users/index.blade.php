@@ -29,14 +29,18 @@
                   <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                       <tr>
+                        <th>Código</th>
+                        <th>Cedula</th>
                         <th>Cargo</th>
-                        <th>Creado</th>
+                        <th>Correo</th>
                         <th>Acciones</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach($users as $user)
                         <tr class="">
+                          <td>{{ $user->codigo }}</td>
+                          <td>{{ $user->cedula }}</td>
                           <td>{{ $user->user->perfil->nombre }}</td>
                           <td>{{ $user->user->email }}</td>
                           <td>
@@ -46,7 +50,7 @@
 
                               <a href="{{ URL::to('users/' . $user->id) }}" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> Ver</a>
 
-                              <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#del{!!$user->id!!}"><i class="fa fa-trash"></i> Eliminar</button>
+                              <!-- <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#del{!!$user->id!!}"><i class="fa fa-trash"></i> Eliminar</button> -->
                               <!-- Modal -->
                               <div class="modal fade" id="del{!!$user->id!!}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                 <div class="modal-dialog" role="document">

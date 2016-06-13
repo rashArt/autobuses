@@ -23,6 +23,9 @@
   <!-- Custom CSS -->
   <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
 
+  <!-- Bootstrap Datetimepicker CSS -->
+  <link href="{{ asset('js/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+
   <!-- Custom Fonts -->
   <link href="{{ asset('font-awesome-4.5.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
@@ -178,7 +181,7 @@
             </li>
             @endif
             <li>
-              <a href="#" class="@yield('descargas')"><i class="fa fa-download fa-fw"></i> Descargas</a>
+              <a href="{{ route('descargas') }}" class="@yield('descargas')"><i class="fa fa-download fa-fw"></i> Descargas</a>
             </li>
           </ul>
         </div>
@@ -205,6 +208,9 @@
   <script src="{{ asset('js/sb-admin-2.js') }}"></script>
 
   <script src="{{ asset('js/plugins/select2/js/select2.js') }}"></script>
+
+  <script src="{{ asset('js/plugins/bootstrap-datetimepicker/moment.js') }}"></script>
+  <script src="{{ asset('js/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}" ></script>
 
   @yield('js')
 

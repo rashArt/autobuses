@@ -32,11 +32,21 @@
                   {!! Form::open(['route' => 'autobuses.store', 'method' =>'POST']) !!}
                     <div class="form-group col-md-6">
                       {!! Form::label('dueno', 'Seleccione el Dueño') !!}
-                      {!! Form::select('dueno', $personas, null, ['class' => 'form-control', 'id' => 'dueño']) !!}
+                      <select name="dueno" id="dueño">
+                        <option class="disabled" value="0">- Seleccionar -</option>
+                        @foreach($personas as $persona)
+                        <option value="{{ $persona->id }}">{{ $persona->nombres }} {{ $persona->apellidos }} - {{ $persona->cedula }}</option>
+                        @endforeach
+                      </select>
                     </div>
                     <div class="form-group col-md-6">
                       {!! Form::label('responsable', 'Seleccione el Responsable') !!}
-                      {!! Form::select('responsable', $personas, null, ['class' => 'form-control']) !!}
+                      <select name="responsable" id="dueño">
+                        <option class="disabled" value="0">- Seleccionar -</option>
+                        @foreach($personas as $persona)
+                        <option value="{{ $persona->id }}">{{ $persona->nombres }} {{ $persona->apellidos }} - {{ $persona->cedula }}</option>
+                        @endforeach
+                      </select>
                     </div>
                     <div class="clearfix"></div>
                     <hr>

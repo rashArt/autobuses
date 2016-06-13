@@ -45,6 +45,33 @@ Route::group(['middleware' => 'auth'], function () {
         ]
     );
 
+    Route::get('/descargas',
+        [
+            'uses' => 'DashboardController@descargas',
+            'as' => 'descargas'
+        ]
+    );
+
+    /* DESCARGAS */
+    Route::get('/descargas/totalUsuarios',
+        [
+            'uses' => 'DashboardController@totalUsuarios',
+            'as' => 'descargas/totalUsuarios'
+        ]
+    );
+    Route::get('/descargas/totalAutobuses',
+        [
+            'uses' => 'DashboardController@totalAutobuses',
+            'as' => 'descargas/totalAutobuses'
+        ]
+    );
+    Route::get('/descargas/rutasHoy',
+        [
+            'uses' => 'DashboardController@rutasHoy',
+            'as' => 'descargas/rutasHoy'
+        ]
+    );
+
     /* AUTOBUSES */
         Route::resource('autobuses', 'AutoController');
 

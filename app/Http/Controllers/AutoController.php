@@ -27,7 +27,7 @@ class AutoController extends Controller
 
     public function create()
     {
-        $personas = Persona::lists('cedula', 'id');
+        $personas = Persona::all();
 
         return view('autobuses.create')
             ->with('personas', $personas);

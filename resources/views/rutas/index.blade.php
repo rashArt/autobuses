@@ -30,18 +30,18 @@
                     <thead>
                       <tr>
                         <th>Ruta</th>
-                        <th>Acciones</th>
+                        <!-- <th>Acciones</th> -->
                       </tr>
                     </thead>
                     <tbody>
                       @foreach($rutas as $ruta)
                         <tr class="">
                           <td>{{ $ruta->nombre }}</td>
-                          <td>
+                          <!-- <td>
                             <div class="" role="">
 
                               <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#del{!!$ruta->id!!}"><i class="fa fa-trash"></i> Eliminar</button>
-                              <!-- Modal -->
+                              
                               <div class="modal fade" id="del{!!$ruta->id!!}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
@@ -60,9 +60,9 @@
                                     </div>
                                   </div>
                                 </div>
-                              </div> <!-- / Modal -->
+                              </div>
                             </div>
-                          </td>
+                          </td>-->
                         </tr>
                       @endforeach()
                     </tbody>

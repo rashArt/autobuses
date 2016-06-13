@@ -16,7 +16,7 @@ class AutoRutaController extends Controller
 
     public function index()
     {
-        $rutas = Auto_ruta::all();
+        $rutas = Auto_ruta::orderBy('created_at', 'ASC')->get();
 
         return view('asignaciones.index')
             ->with('rutas', $rutas);

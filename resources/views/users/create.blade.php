@@ -66,7 +66,12 @@
                     </div>
                     <div class="form-group col-md-6">
                       {!! Form::label('fecha_nacimiento', 'Fecha de Nacimiento') !!}
-                      {!! Form::text('fecha_nacimiento', null, ['class' => 'form-control']) !!}
+                      <div class='input-group date' id='datetimepicker'>
+                        {!! Form::text('fecha_nacimiento', null, ['class' => 'form-control icon']) !!}
+                        <span class="input-group-addon">
+                          <span class="fa fa-calendar"></span>
+                        </span>
+                      </div>
                     </div>
                     <div class="form-group col-md-6">
                       {!! Form::label('password', 'Ingrese Contraseña') !!}
@@ -98,4 +103,15 @@
   </div>
   <!-- /#page-wrapper -->
 
+@stop
+
+@section('js')
+<script type="text/javascript">
+  $(function () {
+      $('#datetimepicker').datetimepicker({
+          format: 'YYYY-MM-DD',
+          maxDate: 'moment',
+      });
+  });
+</script>
 @stop

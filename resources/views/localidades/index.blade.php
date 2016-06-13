@@ -44,7 +44,7 @@
 
                               <a href="{{ URL::to('localidades/' . $local->id . '/edit') }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar</a>
 
-                              <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#del{!!$local->id!!}"><i class="fa fa-trash"></i> Eliminar</button>
+                              <!-- <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#del{!!$local->id!!}"><i class="fa fa-trash"></i> Eliminar</button> -->
                               <!-- Modal -->
                               <div class="modal fade" id="del{!!$local->id!!}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                 <div class="modal-dialog" role="document">

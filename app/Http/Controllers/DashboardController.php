@@ -11,6 +11,8 @@ use App\Oficina;
 use App\Persona;
 use App\Auto;
 use App\Auto_ruta;
+use Carbon\Carbon;
+
 
 class DashboardController extends Controller
 {
@@ -27,5 +29,46 @@ class DashboardController extends Controller
             ->with('oficinas', $oficinas)
             ->with('autobuses', $autobuses)
             ->with('asignadas', $asignadas);
+    }
+
+    public function descargas()
+    {
+        $today = Carbon::now();
+        $hoy = $today->toDateString();
+        $rutas = Auto_ruta::where('created_at', 'like', $hoy.'%')->get();
+
+        return view('descargas.index')
+            ->with('rutas', $rutas);
+    }
+
+    public function totalUsuarios()
+    {
+        $personas = Persona::orderBy('cedula','ASC')->get();
+        $fecha = Carbon::now();
+
+        $pdf = \PDF::loadView('descargas.totalUsuarios', ['personas' => $personas]);
+        return $pdf->download('Total_Usuarios_'.$fecha->toDateString().'.pfd');
+    }
+
+    public function totalAutobuses()
+    {
+        $buses = Auto::orderBy('matricula','ASC')->get();
+        $fecha = Carbon::now();
+
+        $pdf = \PDF::loadView('descargas.totalAutobuses', ['buses' => $buses]);
+        return $pdf->download('Total_Autobuses_'.$fecha->toDateString().'.pfd');
+    }
+
+    public function rutasHoy()
+    {
+        $today = Carbon::now();
+        $hoy = $today->toDateString();
+        $rutas = Auto_ruta::where('created_at', 'like', $hoy.'%')->get();
+        //$rutas = Auto_ruta::orderBy('created_at','ASC')->get();
+        $fecha = Carbon::now();
+
+
+        $pdf = \PDF::loadView('descargas.rutasHoy', ['rutas' => $rutas]);
+        return $pdf->download('Total_Rutas_Hoy_'.$fecha->toDateString().'.pfd');
     }
 }
