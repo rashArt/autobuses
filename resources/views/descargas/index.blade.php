@@ -23,7 +23,7 @@
                 <div class="row">
                   <div class="col-xs-12 text-center">
                     <div class="huge"><i class="fa fa-group fa-2x"></i></div>
-                    <div><a class="btn btn-light btn-xs" href="{{ route('descargas/totalUsuarios') }}"><i class="fa fa-download fa-fw"></i>Usuarios</a></div>
+                    <div><a target="blank" class="btn btn-light btn-xs" href="{{ route('descargas/totalUsuarios') }}"><i class="fa fa-download fa-fw"></i>Usuarios</a></div>
                   </div>
                 </div>
               </div>
@@ -35,7 +35,7 @@
                 <div class="row">
                   <div class="col-xs-12 text-center">
                     <div class="huge"><i class="fa fa-bus fa-2x"></i></div>
-                    <div><a class="btn btn-light btn-xs" href="{{ route('descargas/totalAutobuses') }}"><i class="fa fa-download fa-fw"></i>Autobuses</a></div>
+                    <div><a target="blank" class="btn btn-light btn-xs" href="{{ route('descargas/totalAutobuses') }}"><i class="fa fa-download fa-fw"></i>Autobuses</a></div>
                   </div>
                 </div>
               </div>
@@ -49,7 +49,7 @@
                     <div class="huge"><i class="fa fa-road fa-2x"></i></div>
                     <div>
                     @if(count($rutas) != 0)
-                      <a class="btn btn-light btn-xs" href="{{ route('descargas/rutasHoy') }}"><i class="fa fa-download fa-fw"></i>Rutas de hoy</a></div>
+                      <a target="blank" class="btn btn-light btn-xs" href="{{ route('descargas/rutasHoy') }}"><i class="fa fa-download fa-fw"></i>Rutas de hoy</a></div>
                     @else
                       <a class="btn btn-light btn-xs disabled" href="{{ route('descargas/rutasHoy') }}"><i class="fa fa-download fa-fw"></i>Rutas de hoy</a></div>
                     @endif

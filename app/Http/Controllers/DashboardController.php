@@ -46,8 +46,8 @@ class DashboardController extends Controller
         $personas = Persona::orderBy('cedula','ASC')->get();
         $fecha = Carbon::now();
 
-        $pdf = \PDF::loadView('descargas.totalUsuarios', ['personas' => $personas]);
-        return $pdf->download('Total_Usuarios_'.$fecha->toDateString().'.pfd');
+        $pdf = \PDF::loadView('descargas.totalUsuarios', ['personas' => $personas, 'fecha' => $fecha]);
+        return $pdf->stream('Total_Usuarios_'.$fecha->toDateString().'.pfd');
     }
 
     public function totalAutobuses()
@@ -55,8 +55,8 @@ class DashboardController extends Controller
         $buses = Auto::orderBy('matricula','ASC')->get();
         $fecha = Carbon::now();
 
-        $pdf = \PDF::loadView('descargas.totalAutobuses', ['buses' => $buses]);
-        return $pdf->download('Total_Autobuses_'.$fecha->toDateString().'.pfd');
+        $pdf = \PDF::loadView('descargas.totalAutobuses', ['buses' => $buses, 'fecha' => $fecha]);
+        return $pdf->stream('Total_Autobuses_'.$fecha->toDateString().'.pfd');
     }
 
     public function rutasHoy()
@@ -68,7 +68,7 @@ class DashboardController extends Controller
         $fecha = Carbon::now();
 
 
-        $pdf = \PDF::loadView('descargas.rutasHoy', ['rutas' => $rutas]);
-        return $pdf->download('Total_Rutas_Hoy_'.$fecha->toDateString().'.pfd');
+        $pdf = \PDF::loadView('descargas.rutasHoy', ['rutas' => $rutas, 'fecha' => $fecha]);
+        return $pdf->stream('Total_Rutas_Hoy_'.$fecha->toDateString().'.pfd');
     }
 }

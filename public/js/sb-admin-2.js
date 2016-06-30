@@ -26,3 +26,22 @@ $(function() {
         }
     })
 });
+
+
+//  idioma datatable
+$(document).ready(function() {
+    $('#dataTables-example').DataTable( {
+        "language": {
+            "lengthMenu": "_MENU_ Líneas por página",
+            "zeroRecords": "No hay registros",
+            "info": "Página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(Cantidad total: _MAX_)",
+            "search": "Buscar ",
+            "paginate": {
+                "next": "Siguiente",
+                "previous": "Anterior"
+                }
+        }
+    } );
+} );

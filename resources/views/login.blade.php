@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Biblioteca UNERG</title>
+  <title>UNION DE CONDUCTORES 87007 A.C.</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="{{ asset('css/flatly.css') }}" rel="stylesheet">
@@ -38,10 +38,10 @@
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
         <div class="login-panel panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Autobuses</h3>
-          </div>
           <div class="panel-body">
+            <div class="center-block">
+              <img src="{{asset('img/logo.png')}}" class="img-responsive" alt="">
+            </div>
             @include('flash::message')
 
             @if (count($errors) > 0)
