@@ -18,8 +18,8 @@
       <tr>
         <th>Cedula</th>
         <th>Nombre y Apellido</th>
-        <th>Codigo</th>
         <th>Correo</th>
+        <th>Creado</th>
       </tr>
     </thead>
     @foreach($personas as $persona)
@@ -27,8 +27,8 @@
         <tr>
           <td>{{$persona->cedula}}</td>
           <td>{{$persona->nombres}} {{$persona->apellidos}}</td>
-          <td>{{$persona->codigo}}</td>
           <td>{{$persona->user->email}}</td>
+          <td>{{$persona->user->created_at}}</td>
         </tr>
       </tbody>
     @endforeach

@@ -31,10 +31,6 @@
                   @endif
                   {!! Form::open(['route' => 'users.store', 'method' =>'POST']) !!}
                     <div class="form-group col-md-6">
-                      {!! Form::label('codigo', 'Ingrese Codigo') !!}
-                      {!! Form::text('codigo', null, ['class' => 'form-control']) !!}
-                    </div>
-                    <div class="form-group col-md-6">
                       {!! Form::label('perfil_id', 'Seleccione Perfil') !!}
                       {!! Form::select('perfil_id', $perfiles, null, ['class' => 'form-control']) !!}
                     </div>

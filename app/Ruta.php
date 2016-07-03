@@ -8,7 +8,7 @@ class Ruta extends Model
 {
     protected $table = 'rutas';
 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'status'];
 
     /* Relaciones */
 

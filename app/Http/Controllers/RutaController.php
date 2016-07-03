@@ -65,7 +65,13 @@ class RutaController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $ruta = Ruta::find($id);
+        $ruta->status = $request->status;
+        $ruta->save();
+
+        Flash::success('Se ha cambiado el estado de la ruta exitosamente!');
+
+        return back();
     }
 
 

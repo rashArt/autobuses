@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Listado de rutas al día</title>
+  <title>Listado de Rutas</title>
   <link rel="stylesheet" type="text/css" href="css/custom-pdf.css">
 </head>
 <body>
@@ -18,8 +18,8 @@
       <tr>
         <th>Matricula</th>
         <th>Dueño</th>
+        <th>Responsable</th>
         <th>Ruta</th>
-        <th>Fecha</th>
       </tr>
     </thead>
     @foreach($rutas as $ruta)
@@ -31,8 +31,14 @@
               {{ $dueno->nombres }} {{ $dueno->apellidos }} - {{ $dueno->cedula }}
             @endforeach
           </td>
-          <td>{{$ruta->ruta->nombre }}</td>
-          <td>{{$ruta->created_at }}</td>
+          <td>
+            @foreach($ruta->auto->personaResponsables as $rep)
+              {{ $rep->nombres }} {{ $rep->apellidos }} - {{ $rep->cedula }}
+            @endforeach
+          </td>
+          <td>
+            {{ $ruta->ruta->nombre }}
+          </td>
         </tr>
       </tbody>
     @endforeach

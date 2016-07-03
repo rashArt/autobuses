@@ -71,4 +71,13 @@ class DashboardController extends Controller
         $pdf = \PDF::loadView('descargas.rutasHoy', ['rutas' => $rutas, 'fecha' => $fecha]);
         return $pdf->stream('Total_Rutas_Hoy_'.$fecha->toDateString().'.pfd');
     }
+
+    public function rutasTotales()
+    {
+        $rutas = Auto_ruta::orderBy('id','DESC')->get();
+        $fecha = Carbon::now();
+
+        $pdf = \PDF::loadView('descargas.rutasTotales', ['rutas' => $rutas, 'fecha' => $fecha]);
+        return $pdf->stream('Total_rutas_'.$fecha->toDateString().'.pfd');
+    }
 }

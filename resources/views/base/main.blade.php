@@ -168,7 +168,7 @@
               <!-- /.nav-second-level -->
             </li>
             <li class="@yield('users')">
-              <a href="#"><i class="fa fa-users fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
+              <a href="#"><i class="fa fa-users fa-fw"></i> Personal<span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
                 <li>
                   <a href="{{ route('users.create') }}" class="@yield('users-reg')">Registrar</a>

@@ -30,39 +30,54 @@
                     <thead>
                       <tr>
                         <th>Ruta</th>
-                        <!-- <th>Acciones</th> -->
+                        <th>Estado</th>
+                        <th>Acciones</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach($rutas as $ruta)
                         <tr class="">
                           <td>{{ $ruta->nombre }}</td>
-                          <!-- <td>
+                          <td>
+                            @if($ruta->status == 1)
+                              <span class="label label-success">Activa</span>
+                            @else
+                              <span class="label label-danger">Inactiva</span>
+                            @endif
+                          </td>
+                           <td>
                             <div class="" role="">
 
-                              <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#del{!!$ruta->id!!}"><i class="fa fa-trash"></i> Eliminar</button>
-                              
+                              <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#del{!!$ruta->id!!}"><i class="fa fa-refresh"></i> Cambiar</button>
                               <div class="modal fade" id="del{!!$ruta->id!!}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                      <h4 class="modal-title" id="myModalLabel">Desea Eliminar?</h4>
+                                      <h4 class="modal-title" id="myModalLabel">Desea Cambiar?</h4>
                                     </div>
                                     <div class="modal-body">
-                                      Se eliminará de forma permanente
+                                      Está seguro de cambiar el estado de la ruta?
                                     </div>
                                     <div class="modal-footer">
-                                      <div class="btn-group">
-                                        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-                                        <a href="rutas/{{$ruta->id}}/delete" class="btn btn-danger">Eliminar <i class="icon-trash"></i></a>
-                                      </div>
+                                        <button type="button" class="btn btn-success pull-left" data-dismiss="modal">Cancelar</button>
+                                        @if($ruta->status == 1)
+                  {!! Form::model($ruta, array('route' => array('rutas.update', $ruta->id), 'method' => 'PUT')) !!}
+                    <input name="status" type="hidden" value="0">
+                    <button type="submit" class="btn btn-primary">Cambiar</button>
+                  {!! Form::close() !!}
+                                        @else
+                  {!! Form::model($ruta, array('route' => array('rutas.update', $ruta->id), 'method' => 'PUT')) !!}
+                    <input name="status" type="hidden" value="1">
+                    <button type="submit" class="btn btn-primary">Cambiar</button>
+                  {!! Form::close() !!}
+                                        @endif
                                     </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </td>-->
+                          </td>
                         </tr>
                       @endforeach()
                     </tbody>

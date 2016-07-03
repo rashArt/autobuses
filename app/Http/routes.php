@@ -71,6 +71,12 @@ Route::group(['middleware' => 'auth'], function () {
             'as' => 'descargas/rutasHoy'
         ]
     );
+    Route::get('/descargas/rutasTotales',
+        [
+            'uses' => 'DashboardController@rutasTotales',
+            'as' => 'descargas/rutasTotales'
+        ]
+    );
 
     /* AUTOBUSES */
         Route::resource('autobuses', 'AutoController');

@@ -29,20 +29,20 @@
                   <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                       <tr>
-                        <th>Código</th>
                         <th>Cedula</th>
                         <th>Cargo</th>
                         <th>Correo</th>
+                        <th>Registro</th>
                         <th>Acciones</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach($users as $user)
                         <tr class="">
-                          <td>{{ $user->codigo }}</td>
                           <td>{{ $user->cedula }}</td>
                           <td>{{ $user->user->perfil->nombre }}</td>
                           <td>{{ $user->user->email }}</td>
+                          <td>{{ $user->user->created_at }}</td>
                           <td>
                             <div class="" role="">
 

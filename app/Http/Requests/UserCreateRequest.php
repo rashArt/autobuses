@@ -24,7 +24,6 @@ class UserCreateRequest extends Request
     public function rules()
     {
         return [
-            'codigo'                => 'required|unique:personas',
             'cedula'                => 'required|numeric|unique:personas',
             'email'                 => 'required|email|unique:users',
             'nombres'               => 'required',

@@ -41,11 +41,14 @@
                       @foreach($rutas as $ruta)
                         <tr class="">
                           <td>{{ $ruta->created_at }}</td>
-                          <td>{{ $ruta->auto->matricula }} - {{ $ruta->auto->numero }}</td>
+                          <td>
+                            <a href="{{ URL::to('autobuses/' . $ruta->auto->id) }}" class=""><i class="fa fa-search"></i> {{ $ruta->auto->matricula }} - {{ $ruta->auto->numero }}</a>
+                          </td>
                           <td>{{ $ruta->ruta->nombre }}</td>
                           @if (Auth::user()->admin())
                             <td>
-                              <div class="" role="">
+                              <a href="{{ URL::to('asignaciones/' . $ruta->id . '/edit') }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar</a>
+                              {{-- <div class="" role="">
 
                                 <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#del{!!$ruta->id!!}"><i class="fa fa-trash"></i> Eliminar</button>
                                 <!-- Modal -->
@@ -68,7 +71,7 @@
                                     </div>
                                   </div>
                                 </div> <!-- / Modal -->
-                              </div>
+                              </div> --}}
                             </td>
                           @endif
                         </tr>

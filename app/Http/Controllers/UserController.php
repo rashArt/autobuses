@@ -48,7 +48,6 @@ class UserController extends Controller
         $id_user = $ultimo->id;
 
         $persona = new Persona();
-        $persona->codigo              = $request->codigo;
         $persona->oficina_id          = $request->oficina_id;
         $persona->cedula              = $request->cedula;
         $persona->nombres             = $request->nombres;

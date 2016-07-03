@@ -58,6 +58,19 @@
               </div>
             </div>
           </div>
+          <div class="col-lg-3 col-md-3">
+            <div class="panel panel-red">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-12 text-center">
+                    <div class="huge"><i class="fa fa-road fa-2x"></i></div>
+                    <div>
+                      <a target="blank" class="btn btn-light btn-xs" href="{{ route('descargas/rutasTotales') }}"><i class="fa fa-download fa-fw"></i>Total Rutas</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- /.row -->
       </div>

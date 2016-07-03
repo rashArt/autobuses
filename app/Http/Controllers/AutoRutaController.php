@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\AutoRutaCreateRequest;
 use App\Http\Controllers\Controller;
 use App\Auto_ruta;
 use App\Ruta;
@@ -24,7 +25,7 @@ class AutoRutaController extends Controller
 
     public function create()
     {
-        $rutas = Ruta::lists('nombre', 'id');
+        $rutas = Ruta::whereNotIn('status', [0])->lists('nombre', 'id');
         $autobuses = Auto::all();
 
         return view('asignaciones.create')
@@ -32,7 +33,7 @@ class AutoRutaController extends Controller
             ->with('autobuses', $autobuses);
     }
 
-    public function store(Request $request)
+    public function store(AutoRutaCreateRequest $request)
     {
         $ruta = new Auto_ruta();
         $ruta->auto_id  = $request->auto_id;
@@ -51,19 +52,26 @@ class AutoRutaController extends Controller
 
     public function edit($id)
     {
-       //
+        $ruta = Auto_ruta::find($id);
+        $rutas = Ruta::whereNotIn('id', [$ruta->ruta_id])->lists('nombre', 'id');
+        $autobuses = Auto::all();
+
+        return view('asignaciones.edit')
+            ->with('ruta', $ruta)
+            ->with('rutas', $rutas)
+            ->with('autobuses', $autobuses);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $ruta = Auto_ruta::find($id);
+        $ruta->ruta_id = $request->ruta_id;
+        // $ruta->auto_id = $ruta->auto_id;
+        $ruta->save();
+
+        Flash::success('Se ha actualizado la ruta asignada exitosamente!');
+
+        return redirect()->route('asignaciones.index');
     }
 
     /**
